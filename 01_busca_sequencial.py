@@ -74,3 +74,8 @@ hora_ini = time()
 print(f"Posição de ORKUTILSON: {busca_sequencial(nomes, 'ORKUTILSON')}")
 hora_fim = time()
 print(f"Tempo gasto: {(hora_fim - hora_ini) * 1000}ms")
+
+hora_ini = time()
+print(f"Posição de AARAO: {busca_sequencial(nomes, 'AARAO')}")
+hora_fim = time()
+print(f"Tempo gasto: {(hora_fim - hora_ini) * 1000}ms")

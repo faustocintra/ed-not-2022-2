@@ -5,29 +5,35 @@
     trocando dois elementos adjacentes sempre que o 
     segundo for MENOR que o primeiro. Efetua tantas passadas
     quanto necessárias até que, na última passada, nenhuma
-    troca seja efetuada. 
+    troca seja efetuada.
+
+    VERSÃO OTIMIZADA para ir reduzindo a faixa de comparação
+    dentro da lista à medida que os valores no final vão sendo
+    colocados em seu local correto.
 """
 
 # Variáveis de estatística
 comps = trocas = passadas = 0
 
 def bubble_sort(lista):
-
+ 
     global comps, passadas, trocas
     comps = trocas = passadas = 0
+
+    fim = 1
 
     # Loop eterno (não sabemos quantas passadas serão necessárias)
     while True:
 
         # Começa uma nova passada
         passadas += 1
-        trocou = False
+        trocou = False        
 
         # Percurso da lista, do primeiro ao último elemento
         # com acesso a cada posição
 
         # O loop só pode ir até a PENÚLTIMA posição
-        for pos in range(len(lista) - 1):
+        for pos in range(len(lista) - fim):
             comps += 1
             if lista[pos + 1] < lista[pos]:
                 # Efetua a troca
@@ -37,6 +43,9 @@ def bubble_sort(lista):
 
         if not trocou:  # Não houve troca na passada; ESTÁ ORDENADO!
             break   # Termina o loop eterno
+        else:
+            # Aumenta o número de elementos ignorados no fim da lista
+            fim += 1
 
 ###################################################################
 

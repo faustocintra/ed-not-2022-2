@@ -57,12 +57,16 @@ def selection_sort(lista):
 
 from time import time
 from data.nomes_desord import nomes
+import tracemalloc
 
+tracemalloc.start()
 hora_ini = time()
 selection_sort(nomes)  # A ordenação ocorre aqui
 hora_fim = time()
+mem_atual, mem_pico = tracemalloc.get_traced_memory()
 
-# print("Depois:", nomes)
+print("Depois:", nomes[:1000])
 
 print(f"Passadas: {passadas}; comparações: {comps}; trocas: {trocas}")
+print(f"Pico de memória: { mem_pico / 1024 / 1024 } MB")
 print(f"Tempo gasto: {(hora_fim - hora_ini) * 1000}ms; comparações: {comps}")

@@ -40,33 +40,33 @@ def selection_sort(lista):
 
 ##########################################################################
 
-# nums = [7, 3, 6, 8, 1, 4, 9, 0, 5, 2, 6]
+nums = [7, 3, 6, 8, 1, 4, 9, 0, 5, 2, 6]
 
-# # Pior caso
-# # nums = [9, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+# Pior caso
+# nums = [9, 0, 1, 2, 3, 4, 5, 6, 7, 8]
 
-# # Melhor caso
-# # nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# Melhor caso
+# nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-# print("Antes:", nums)
-# selection_sort(nums)
-# print("Depois:", nums)
-# print(f"Passadas: {passadas}; comparações: {comps}; trocas: {trocas}")
+print("Antes:", nums)
+selection_sort(nums)
+print("Depois:", nums)
+print(f"Passadas: {passadas}; comparações: {comps}; trocas: {trocas}")
 
 #####################################################################
 
-from time import time
-from data.nomes_desord import nomes
-import tracemalloc
+# from time import time
+# from data.nomes_desord import nomes
+# import tracemalloc
 
-tracemalloc.start()
-hora_ini = time()
-selection_sort(nomes)  # A ordenação ocorre aqui
-hora_fim = time()
-mem_atual, mem_pico = tracemalloc.get_traced_memory()
+# tracemalloc.start()
+# hora_ini = time()
+# selection_sort(nomes)  # A ordenação ocorre aqui
+# hora_fim = time()
+# mem_atual, mem_pico = tracemalloc.get_traced_memory()
 
-print("Depois:", nomes[:1000])
+# print("Depois:", nomes[:1000])
 
-print(f"Passadas: {passadas}; comparações: {comps}; trocas: {trocas}")
-print(f"Pico de memória: { mem_pico / 1024 / 1024 } MB")
-print(f"Tempo gasto: {(hora_fim - hora_ini) * 1000}ms; comparações: {comps}")
+# print(f"Passadas: {passadas}; comparações: {comps}; trocas: {trocas}")
+# print(f"Pico de memória: { mem_pico / 1024 / 1024 } MB")
+# print(f"Tempo gasto: {(hora_fim - hora_ini) * 1000}ms; comparações: {comps}")

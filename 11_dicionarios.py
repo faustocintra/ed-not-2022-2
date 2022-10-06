@@ -46,6 +46,12 @@ forma3 = {
     "tipo": "E" # elipse
 }
 
+# forma4 = {
+#     "base": 22,
+#     "altura": 6,
+#     "tipo": 5
+# }
+
 # Função que calcula a área de uma forma geométrica plana
 # sabendo as medidas da base e da altura e o tipo de forma
 from math import pi
@@ -67,3 +73,5 @@ print(f"Forma: {forma1['tipo']}; base: {forma1['base']}; altura: {forma1['altura
 print(f"Forma: {forma2['tipo']}; base: {forma2['base']}; altura: {forma2['altura']}; área: {calc_area(forma2)}")
 
 print(f"Forma: {forma3['tipo']}; base: {forma3['base']}; altura: {forma3['altura']}; área: {calc_area(forma3)}")
+
+# print(f"Forma: {forma4['tipo']}; base: {forma4['base']}; altura: {forma4['altura']}; área: {calc_area(forma4)}")

@@ -67,22 +67,22 @@ class Stack:
 
 ###########################################################
 
-# Cria uma nova pilha
-pilha = Stack()
+# # Cria uma nova pilha
+# pilha = Stack()
 
-# print(pilha.__data)
+# # print(pilha.__data)
 
-# Insere valores na pilha
-pilha.push(35)
-pilha.push(29)
-pilha.push(16)
+# # Insere valores na pilha
+# pilha.push(35)
+# pilha.push(29)
+# pilha.push(16)
 
-print(pilha)
+# print(pilha)
 
-retirado = pilha.pop()
-print(f"Retirado: {retirado}")
-print(pilha)
+# retirado = pilha.pop()
+# print(f"Retirado: {retirado}")
+# print(pilha)
 
-consultado = pilha.peek()
-print(f"Consultado: {consultado}")
-print(pilha)
+# consultado = pilha.peek()
+# print(f"Consultado: {consultado}")
+# print(pilha)

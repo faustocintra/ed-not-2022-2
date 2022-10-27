@@ -8,9 +8,6 @@
     a sair.
 """
 
-from multiprocessing.util import is_abstract_socket_namespace
-
-
 class Stack:
 
     """ Método construtor """

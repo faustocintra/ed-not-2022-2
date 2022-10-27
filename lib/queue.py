@@ -19,3 +19,32 @@ class Queue:
     """
     def enqueue(self, val):
         self.__data.append(val)
+
+    """
+        Método que testa se a fila está ou não vazia
+    """
+    def is_empty(self):
+        return len(self.__data) == 0
+
+    """
+        Método de remoção
+        Em filas, tem nome padronizado: dequeue()
+    """
+    def dequeue(self):
+        if self.is_empty():
+            raise Exception('ERRO: impossível remover de uma fila vazia.')
+        return self.__data.pop(0)   # Remove o primeiro item
+
+    """
+        Método para consultar o primeiro item da fila, sem retirá-lo
+    """
+    def peek(self):
+        if self.is_empty():
+            raise Exception('ERRO: impossível consultar uma fila vazia.')
+        return self.__data[0]   # Retorna o primeiro item, sem removê-lo
+
+    """
+        Método que retorna uma representação da fila como string
+    """
+    def __str__(self):
+        return str(self.__data)

@@ -60,6 +60,7 @@ class DoublyLinkedList:
             node = self.__tail  # Começa pelo último nodo
             for i in range(self.__count - 2, pos - 1, -1):
                 node = node.prev
+            return node
 
 
     """ Método que insere um novo valor à lista """
@@ -92,7 +93,73 @@ class DoublyLinkedList:
 
         # 4º caso: inserção em posição intermediária
         elif pos > 0:
-            pass        # Não faz nada
+            # Encontra o nodo que atualmente ocupa a posição de inserção
+            current = self.__find_node(pos)
+            # Determina o nodo anterior à posição de inserção
+            before = current.prev
+
+            before.next = inserted
+            inserted.prev = before
+            inserted.next = current
+            current.prev = inserted
 
         # Incrementa a contagem de nodos
         self.__count += 1
+
+    """ Método de atalho para inserção no início da lista """
+    def insert_front(self, val):
+        self.insert(0, val)
+
+    """ Método de atalho para inserção no final da lista """
+    def insert_back(self, val):
+        self.insert(self.__count, val)
+
+    """
+        Método que remove o nodo da posição especificada
+    """
+    def remove(self, pos):
+
+        # 1º caso: lista vazia ou posição fora dos limites da lista
+        if self.__count == 0 or pos < 0 or pos > self.__count - 1:
+            raise Exception("ERRO: posição inválida para remoção.")
+
+        # 2º caso: remoção do início da lista (posição 0)
+        if pos == 0:
+            # Será removido o primeiro nodo da lista
+            removed = self.__head
+            # O novo __head passa a ser o sucessor do nodo removido
+            self.__head = removed.next
+            # Se o novo __head for um nodo válido, ele não pode ter
+            # antecessor
+            if self.__head is not None: self.__head.prev = None
+            # Em caso de remoção do único nodo restante da lista,
+            # __tail precisa passar a valer None também
+            if self.__count == 1: self.__tail = None
+
+        # 3º caso: remoção do final da lista (posição __count - 1)
+        elif pos == self.__count - 1:
+            # Será removido o último nodo da lista
+            removed = self.__tail
+            # O novo __tail passa a ser o antecessor do nodo removido
+            self.__tail = removed.prev
+            # Se o novo __tail for um nodo válido, ele não pode ter
+            # sucessor
+            if self.__tail is not None: self.__tail.next = None
+            # Em caso de remoção do único nodo restante da lista,
+            # __head precisa passar a valer None também
+            if self.__count == 1: self.__head = None
+
+        # Decrementa a quantidade de itens da lista
+        self.__count -= 1
+        # Retorna o dado de usuário armazenado no nodo removido
+        return removed.data
+
+    """ Método que permite visualizar a estrutura como string """
+    def __str__(self):
+        output = ""
+        node = self.__head
+        for pos in range(self.__count):
+            if output != "": output += ", "
+            output += f"({pos}) => {node.data}"
+            node = node.next
+        return f"[ {output} ], count: {self.__count}"

@@ -149,10 +149,46 @@ class DoublyLinkedList:
             # __head precisa passar a valer None também
             if self.__count == 1: self.__head = None
 
+        # 4º caso: remoção em posição intermediária
+        else:
+            # Encontra o nodo que será removido
+            removed = self.__find_node(pos)
+            before = removed.prev   # Nodo anterior
+            after = removed.next    # Nodo posterior
+            # O nodo anterior passa a apontar, à frente, para nodo posterior
+            before.next = after
+            # O nodo posteror passa a apontar, para trás, para o nodo anterior
+            after.prev = before
+
         # Decrementa a quantidade de itens da lista
         self.__count -= 1
         # Retorna o dado de usuário armazenado no nodo removido
         return removed.data
+
+    """ Método de atalho para remoção de início """
+    def remove_front(self):
+        return self.remove(0)
+
+    """ Método de atalho para remoção do final """
+    def remove_back(self):
+        return self.remove(self.__count - 1)
+
+    """ Método que permite consultar o conteúdo de um nodo, sem removê-lo """
+    def peek(self, pos):
+        # Verifica se a posição passada existe na lista
+        if pos < 0 or pos >= self.__count:
+            raise Exception('ERRO: impossível consultar de uma posição inexistente.')
+
+        node = self.__find_node(pos)
+        return node.data
+
+    """ Método de atalho para consultar o primeiro nodo """
+    def peek_front(self):
+        return self.peek(0)
+
+    """ Método de atalho para consultar o último nodo """
+    def peek_back(self):
+        return self.peek(self.__count - 1)
 
     """ Método que permite visualizar a estrutura como string """
     def __str__(self):
